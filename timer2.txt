@@ -1,0 +1,20 @@
+#include <LiquidCrystal.h>
+unsigned long time;
+LiquidCrystal lcd(8,9,4,5,6,7);
+void setup() {
+lcd.begin(16, 2);
+}
+void loop() {
+delay(1000);
+lcd.clear();
+time = millis()/1000; // из мс в 1с
+lcd.setCursor(0,1);
+if (time/60/60<10) {lcd.print("0");} 
+lcd.print(time/60/60);
+lcd.print(":");
+if (time/60%60<10) {lcd.print("0");}
+lcd.print((time/60)%60);
+lcd.print(":");
+if (time%60<10) {lcd.print("0");}
+lcd.print(time%60);
+}
